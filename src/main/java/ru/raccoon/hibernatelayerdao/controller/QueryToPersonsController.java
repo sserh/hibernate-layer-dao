@@ -3,6 +3,7 @@ package ru.raccoon.hibernatelayerdao.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.raccoon.hibernatelayerdao.model.Person;
 import ru.raccoon.hibernatelayerdao.service.PrepareResponseService;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class QueryToPersonsController {
     }
 
     @GetMapping("/persons/by-city")
-    private List<String> getPersonsByCity(@RequestParam String city) {
+    private List<Person> getPersonsByCity(@RequestParam String city) {
         return prepareResponseService.prepareResponse(city);
     }
 }

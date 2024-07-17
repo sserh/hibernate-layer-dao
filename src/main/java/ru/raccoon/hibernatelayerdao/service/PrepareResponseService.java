@@ -16,16 +16,8 @@ public class PrepareResponseService {
         this.personRepository = personRepository;
     }
 
-    public List<String> prepareResponse(String city) {
+    public List<Person> prepareResponse(String city) {
 
-        List<String> stringList = new ArrayList<>();
-        stringList.add("В городе " + city + " проживают: ");
-        List<Person> personList = personRepository.getPersonsByCity(city);
-
-        for (Person person : personList) {
-            stringList.add(person.getName() + " " + person.getSurname());
-        }
-
-        return stringList;
+        return personRepository.getPersonsByCity(city);
     }
 }
