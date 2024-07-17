@@ -6,8 +6,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import ru.raccoon.hibernatelayerdao.model.Person;
-import ru.raccoon.hibernatelayerdao.model.PersonPrimaryKey;
 
 @SpringBootApplication
 public class Runner implements CommandLineRunner {
@@ -22,6 +20,9 @@ public class Runner implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+
+        //код создания таблицы и добавления данных
+
  /*       Person person_1 = Person.builder()
                 .name("Ivan")
                 .surname("Ivanov")

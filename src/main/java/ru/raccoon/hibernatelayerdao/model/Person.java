@@ -1,6 +1,5 @@
 package ru.raccoon.hibernatelayerdao.model;
 
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;

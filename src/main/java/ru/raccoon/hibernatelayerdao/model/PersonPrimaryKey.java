@@ -1,7 +1,5 @@
 package ru.raccoon.hibernatelayerdao.model;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
