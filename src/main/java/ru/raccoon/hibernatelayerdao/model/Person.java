@@ -1,12 +1,12 @@
 package ru.raccoon.hibernatelayerdao.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Optional;
 
 @Data
 @Entity
@@ -26,8 +26,8 @@ public class Person {
     private String phoneNumber;
     private String cityOfLiving;
 
-    @Override
-    public String toString() {
-        return this.name + " " + this.surname;
+    public static Optional<Person> returnOptional(Person person) {
+        return Optional.ofNullable(person);
     }
+
 }

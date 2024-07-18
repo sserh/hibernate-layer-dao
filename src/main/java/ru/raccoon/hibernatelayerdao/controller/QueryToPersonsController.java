@@ -7,6 +7,7 @@ import ru.raccoon.hibernatelayerdao.model.Person;
 import ru.raccoon.hibernatelayerdao.service.PrepareResponseService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QueryToPersonsController {
@@ -18,7 +19,17 @@ public class QueryToPersonsController {
     }
 
     @GetMapping("/persons/by-city")
-    private List<Person> getPersonsByCity(@RequestParam String city) {
-        return prepareResponseService.prepareResponse(city);
+    private List<Person> getPersonsByName(@RequestParam String city) {
+        return prepareResponseService.prepareResponseByCity(city);
+    }
+
+    @GetMapping("/persons/by-age")
+    private List<Person> getPersonsByName(@RequestParam int age) {
+        return prepareResponseService.prepareResponseByAge(age);
+    }
+
+    @GetMapping("/persons/by-name-surname")
+    private List<Optional<Person>> getPersonsByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
+        return prepareResponseService.prepareResponseByNameAndSurname(name, surname);
     }
 }

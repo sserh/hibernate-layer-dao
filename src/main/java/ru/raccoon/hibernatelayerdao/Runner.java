@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import ru.raccoon.hibernatelayerdao.model.Person;
+import ru.raccoon.hibernatelayerdao.model.PersonPrimaryKey;
 
 @SpringBootApplication
 public class Runner implements CommandLineRunner {
@@ -21,30 +23,46 @@ public class Runner implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
 
-        //код создания таблицы и добавления данных
+        //код добавления данных в таблицу
 
- /*       Person person_1 = Person.builder()
-                .name("Ivan")
-                .surname("Ivanov")
-                .age(31)
+/*        Person person_1 = Person.builder()
+                .personPrimaryKey(PersonPrimaryKey.builder()
+                        .name("Ivan")
+                        .surname("Ivanov")
+                        .age(31)
+                        .build())
                 .phoneNumber("+79538473100")
                 .cityOfLiving("Svinsk")
                 .build();
 
         Person person_2 = Person.builder()
-                .name("Egor")
-                .surname("Egorov")
-                .age(19)
+                .personPrimaryKey(PersonPrimaryKey.builder()
+                        .name("Egor")
+                        .surname("Egorov")
+                        .age(19)
+                        .build())
                 .phoneNumber("+79538479100")
                 .cityOfLiving("Svinsk")
                 .build();
 
         Person person_3 = Person.builder()
-                .name("Petr")
-                .surname("Petrov")
-                .age(99)
+                .personPrimaryKey(PersonPrimaryKey.builder()
+                        .name("Petr")
+                        .surname("Petrov")
+                        .age(99)
+                        .build())
                 .phoneNumber("+79538479900")
                 .cityOfLiving("Cemetery")
+                .build();
+
+        Person person_4 = Person.builder()
+                .personPrimaryKey(PersonPrimaryKey.builder()
+                        .name("Petr")
+                        .surname("Petrov")
+                        .age(45)
+                        .build())
+                .phoneNumber("+79538474500")
+                .cityOfLiving("SPb")
                 .build();
 
         entityManager.persist(person_1);
