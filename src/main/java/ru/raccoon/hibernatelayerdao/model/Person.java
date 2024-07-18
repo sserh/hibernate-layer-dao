@@ -25,9 +25,4 @@ public class Person {
 
     private String phoneNumber;
     private String cityOfLiving;
-
-    public static Optional<Person> returnOptional(Person person) {
-        return Optional.ofNullable(person);
-    }
-
 }

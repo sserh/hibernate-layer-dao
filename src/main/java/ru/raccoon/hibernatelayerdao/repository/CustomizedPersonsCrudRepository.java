@@ -23,5 +23,5 @@ public interface CustomizedPersonsCrudRepository extends CrudRepository<Person, 
             persons.add(Optional.of(person));
         }
         return persons;
-    };
+    }
 }
