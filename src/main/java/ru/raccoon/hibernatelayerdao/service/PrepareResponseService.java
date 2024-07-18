@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class PrepareResponseService {
 
-    CustomizedPersonsCrudRepository personRepository;
+    private final CustomizedPersonsCrudRepository personRepository;
 
     public PrepareResponseService(CustomizedPersonsCrudRepository personRepository) {
         this.personRepository = personRepository;
