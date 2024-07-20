@@ -1,6 +1,7 @@
 package ru.raccoon.hibernatelayerdao.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Repository;
 import ru.raccoon.hibernatelayerdao.model.Person;
 import ru.raccoon.hibernatelayerdao.model.PersonPrimaryKey;
@@ -24,4 +25,6 @@ public interface CustomizedPersonsCrudRepository extends CrudRepository<Person, 
         }
         return persons;
     }
+
+    List<Person> findBySurnameContainingIgnoreCase(String surname);
 }
