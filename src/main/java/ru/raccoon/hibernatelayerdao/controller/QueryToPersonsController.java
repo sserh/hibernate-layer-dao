@@ -1,5 +1,9 @@
 package ru.raccoon.hibernatelayerdao.controller;
 
+import jakarta.annotation.security.RolesAllowed;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,23 +24,27 @@ public class QueryToPersonsController {
         this.prepareResponseService = prepareResponseService;
     }
 
+    @Secured("ROLE_READ")
     @GetMapping("persons/by-city")
-    private List<Person> getPersonsByCity(@RequestParam String city) {
+    public List<Person> getPersonsByCity(@RequestParam String city) {
         return prepareResponseService.prepareResponseByCity(city);
     }
 
+    @RolesAllowed("WRITE")
     @GetMapping("persons/by-age")
-    private List<Person> getPersonsByAge(@RequestParam int age) {
+    public List<Person> getPersonsByAge(@RequestParam int age) {
         return prepareResponseService.prepareResponseByAge(age);
     }
 
-    @GetMapping("persons/by-name-surname")
-    private List<Optional<Person>> getPersonsByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
-        return prepareResponseService.prepareResponseByNameAndSurname(name, surname);
+    @PostAuthorize("#surname.equalsIgnoreCase(authentication.principal.username)")
+    @GetMapping("persons/by-surname")
+    public List<Person> getPersonsBySurname(@RequestParam String surname) {
+        return prepareResponseService.prepareResponseBySurname(surname);
     }
 
-    @GetMapping("persons/by-surname")
-    private List<Person> getPersonsBySurname(@RequestParam String surname) {
-        return prepareResponseService.prepareResponseBySurname(surname);
+    @PreAuthorize("hasAnyRole('WRITE', 'DELETE')")
+    @GetMapping("persons/by-name-surname")
+    public List<Optional<Person>> getPersonsByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
+        return prepareResponseService.prepareResponseByNameAndSurname(name, surname);
     }
 }
